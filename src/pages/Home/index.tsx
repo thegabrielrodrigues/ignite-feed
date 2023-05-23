@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header';
+import { Post } from '@/components/Post';
 import { Sidebar } from '@/components/Sidebar';
 
 import styles from './styles.module.css';
@@ -12,8 +13,8 @@ export function Home() {
         <Sidebar />
 
         <main>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis voluptas fugit tempore neque, inventore aperiam hic iure placeat
-          perspiciatis reprehenderit enim veritatis harum ducimus repellendus porro totam voluptatibus pariatur sunt!
+          <Post />
+          <Post />
         </main>
       </div>
     </div>

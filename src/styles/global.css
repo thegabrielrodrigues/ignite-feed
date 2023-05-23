@@ -34,3 +34,9 @@ button {
   font-size: 1rem;
   font-weight: 400;
 }
+
+:focus {
+  border-radius: 3px;
+  outline: 1px solid var(--green-500);
+  box-shadow: 0 0 5px 1px var(--green-500);
+}

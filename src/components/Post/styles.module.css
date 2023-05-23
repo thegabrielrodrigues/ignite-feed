@@ -126,3 +126,7 @@
 .publish_button button:hover {
   background-color: var(--green-300);
 }
+
+.post_bottom .comment_list {
+  margin-top: 2rem;
+}

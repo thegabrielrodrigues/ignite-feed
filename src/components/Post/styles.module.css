@@ -20,14 +20,6 @@
   gap: 1rem;
 }
 
-.post_author .avatar {
-  height: 3.75rem;
-  width: 3.75rem;
-  border: 4px solid var(--gray-800);
-  border-radius: 8px;
-  outline: 2px solid var(--green-500);
-}
-
 .post_author .author_info {
   line-height: 1.4rem;
   display: flex;

@@ -7,12 +7,6 @@
   margin-top: 1.5rem;
 }
 
-.comment .avatar {
-  height: 3.125rem;
-  width: 3.125rem;
-  border-radius: 8px;
-}
-
 .comment .comment_column {
   display: flex;
   flex-direction: column;

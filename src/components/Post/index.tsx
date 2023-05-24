@@ -1,5 +1,8 @@
 import { FormEvent, useState } from 'react';
 
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { Avatar } from '@/components/Avatar';
 import { Comment } from '@/components/Comment';
 import { CommentDTO } from '@/dtos/CommentDTO';
@@ -15,7 +18,12 @@ export function Post({ postData }: PostProps) {
   const [comments, setComments] = useState<CommentDTO[]>([]);
   const [newTextComment, setNewTextComment] = useState<string>('');
 
-  const { author, content } = postData;
+  const { author, content, publishedAt } = postData;
+
+  const publicationDate = {
+    formattedPublicationDate: format(publishedAt, "dd' de 'MMMM' às 'HH:mm", { locale: ptBR }),
+    publicationDateRelativeToNow: formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true }),
+  };
 
   function handleCreateNewComment(e: FormEvent) {
     e.preventDefault();
@@ -39,8 +47,8 @@ export function Post({ postData }: PostProps) {
             <span>{author.role}</span>
           </div>
         </div>
-        <time title="13 de Maio às 08:13" dateTime="2023-05-13 08:13:30">
-          Publicado há 1h
+        <time title={publicationDate.formattedPublicationDate} dateTime={publishedAt.toISOString()}>
+          {publicationDate.publicationDateRelativeToNow}
         </time>
       </div>
 

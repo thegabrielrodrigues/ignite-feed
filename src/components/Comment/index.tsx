@@ -1,4 +1,6 @@
 import { ThumbsUp, Trash } from '@phosphor-icons/react';
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import { Avatar } from '@/components/Avatar';
 import { CommentDTO } from '@/dtos/CommentDTO';
@@ -10,7 +12,12 @@ interface CommentProps {
 }
 
 export function Comment({ commentData }: CommentProps) {
-  const { content } = commentData;
+  const { content, publishedAt } = commentData;
+
+  const publicationDate = {
+    formattedPublicationDate: format(publishedAt, "dd' de 'MMMM' às 'HH:mm", { locale: ptBR }),
+    publicationDateRelativeToNow: formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true }),
+  };
 
   return (
     <div className={styles.comment}>
@@ -21,8 +28,8 @@ export function Comment({ commentData }: CommentProps) {
           <div className={styles.comment_box_top}>
             <div className={styles.author_and_time}>
               <strong>Gabriel Rodrigues</strong>
-              <time title="13 de Maio às 14:28" dateTime="2023-05-13 14:28:46">
-                Há 2 horas atrás
+              <time title={publicationDate.formattedPublicationDate} dateTime={publishedAt.toISOString()}>
+                {publicationDate.publicationDateRelativeToNow}
               </time>
             </div>
             <button className={styles.trash_button}>

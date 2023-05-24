@@ -1,19 +1,26 @@
 import { ThumbsUp, Trash } from '@phosphor-icons/react';
 
 import { Avatar } from '@/components/Avatar';
+import { CommentDTO } from '@/dtos/CommentDTO';
 
 import styles from './styles.module.css';
 
-export function Comment() {
+interface CommentProps {
+  commentData: CommentDTO;
+}
+
+export function Comment({ commentData }: CommentProps) {
+  const { content } = commentData;
+
   return (
     <div className={styles.comment}>
-      <Avatar src="https://github.com/diego3g.png" />
+      <Avatar src="https://github.com/thegabrielrodrigues.png" />
 
       <div className={styles.comment_column}>
         <div className={styles.comment_box}>
           <div className={styles.comment_box_top}>
             <div className={styles.author_and_time}>
-              <strong>Diego Fernandes</strong>
+              <strong>Gabriel Rodrigues</strong>
               <time title="13 de Maio às 14:28" dateTime="2023-05-13 14:28:46">
                 Há 2 horas atrás
               </time>
@@ -23,10 +30,7 @@ export function Comment() {
             </button>
           </div>
 
-          <div className={styles.comment_box_content}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt architecto fuga tenetur similique vitae dolor consectetur a,
-            dolorum saepe! Eligendi assumenda non ullam rem accusamus asperiores corrupti ipsa est quod!
-          </div>
+          <div className={styles.comment_box_content}>{content}</div>
         </div>
 
         <div className={styles.like_button}>

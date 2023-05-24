@@ -9,9 +9,10 @@ import styles from './styles.module.css';
 
 interface CommentProps {
   commentData: CommentDTO;
+  onRemove: (commentPostDate: string) => void;
 }
 
-export function Comment({ commentData }: CommentProps) {
+export function Comment({ commentData, onRemove }: CommentProps) {
   const { content, publishedAt } = commentData;
 
   const publicationDate = {
@@ -32,7 +33,11 @@ export function Comment({ commentData }: CommentProps) {
                 {publicationDate.publicationDateRelativeToNow}
               </time>
             </div>
-            <button className={styles.trash_button}>
+            <button
+              className={styles.trash_button}
+              onClick={() => onRemove(new Date(publishedAt).toISOString())}
+              title="Remover comentário"
+            >
               <Trash size={24} />
             </button>
           </div>

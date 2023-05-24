@@ -37,6 +37,10 @@ export function Post({ postData }: PostProps) {
     setNewTextComment('');
   }
 
+  function handleDeleteComment(commentPostDate: string) {
+    setComments(comments.filter((comment) => new Date(comment.publishedAt).toISOString() !== commentPostDate));
+  }
+
   return (
     <article className={styles.post}>
       <div className={styles.post_top}>
@@ -81,7 +85,12 @@ export function Post({ postData }: PostProps) {
         <form className={styles.comment_form} onSubmit={handleCreateNewComment}>
           <div className={styles.leave_feedback}>
             <strong>Deixe seu feedback</strong>
-            <textarea onChange={(e) => setNewTextComment(e.target.value)} placeholder="Deixe um comentário..." value={newTextComment} />
+            <textarea
+              onChange={(e) => setNewTextComment(e.target.value)}
+              placeholder="Deixe um comentário..."
+              required={true}
+              value={newTextComment}
+            />
           </div>
           <div className={styles.publish_button}>
             <button type="submit">Publicar</button>
@@ -90,7 +99,7 @@ export function Post({ postData }: PostProps) {
 
         <div className={comments.length && styles.comment_list}>
           {comments.map((comment, index) => (
-            <Comment key={index} commentData={comment} />
+            <Comment key={index} commentData={comment} onRemove={handleDeleteComment} />
           ))}
         </div>
       </div>

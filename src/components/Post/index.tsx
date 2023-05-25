@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -20,10 +20,23 @@ export function Post({ postData }: PostProps) {
 
   const { author, content, publishedAt } = postData;
 
+  const isNewCommentEmpty = newTextComment.length === 0;
   const publicationDate = {
     formattedPublicationDate: format(publishedAt, "dd' de 'MMMM' às 'HH:mm", { locale: ptBR }),
     publicationDateRelativeToNow: formatDistanceToNow(publishedAt, { locale: ptBR, addSuffix: true }),
   };
+
+  class Form {
+    handleNewCommentChange(e: ChangeEvent<HTMLTextAreaElement>) {
+      e.target.setCustomValidity('');
+
+      setNewTextComment(e.target.value);
+    }
+
+    handleNewInvalidComment(e: InvalidEvent<HTMLTextAreaElement>) {
+      e.target.setCustomValidity('Preencha este campo por favor!');
+    }
+  }
 
   function handleCreateNewComment(e: FormEvent) {
     e.preventDefault();
@@ -86,14 +99,17 @@ export function Post({ postData }: PostProps) {
           <div className={styles.leave_feedback}>
             <strong>Deixe seu feedback</strong>
             <textarea
-              onChange={(e) => setNewTextComment(e.target.value)}
+              onChange={new Form().handleNewCommentChange}
+              onInvalid={new Form().handleNewInvalidComment}
               placeholder="Deixe um comentário..."
               required={true}
               value={newTextComment}
             />
           </div>
           <div className={styles.publish_button}>
-            <button type="submit">Publicar</button>
+            <button disabled={isNewCommentEmpty} type="submit">
+              Publicar
+            </button>
           </div>
         </form>
 

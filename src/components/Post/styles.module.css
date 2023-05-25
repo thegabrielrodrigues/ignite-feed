@@ -112,11 +112,16 @@
   color: var(--white);
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.1s;
+  transition: background-color 0.1s, opacity 0.3s;
 }
 
 .publish_button button:hover {
   background-color: var(--green-300);
+}
+
+.publish_button button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .post_bottom .comment_list {

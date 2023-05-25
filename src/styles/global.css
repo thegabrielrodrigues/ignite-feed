@@ -1,0 +1,64 @@
+:root {
+  --white: #ffffff;
+
+  --gray-100: #e1e1e6;
+  --gray-300: #c4c4cc;
+  --gray-400: #8d8d88;
+  --gray-600: #323238;
+  --gray-700: #29292e;
+  --gray-800: #202024;
+  --gray-900: #121214;
+
+  --green-300: #00b37e;
+  --green-500: #00875f;
+
+  --red-500: #f75a68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--gray-900);
+  color: var(--gray-300);
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.swal2ConfirmButton {
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  background-color: var(--gray-700) !important;
+  color: var(--red-500) !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}
+
+.swal2ConfirmButton:active {
+  background-color: #323238e0 !important;
+}
+
+.swal2DenyButton {
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  color: var(--gray-100) !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}
+
+:focus:not(button, .swal2-popup) {
+  border-radius: 3px;
+  outline: 1px solid var(--green-500);
+  box-shadow: 0 0 5px 1px var(--green-500);
+}

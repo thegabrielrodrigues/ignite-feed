@@ -1,0 +1,91 @@
+.comment {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment + .comment {
+  margin-top: 1.5rem;
+}
+
+.comment .comment_column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.comment_column .comment_box {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--gray-700);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comment_box .comment_box_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.comment_box_top .author_and_time {
+  line-height: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.author_and_time strong {
+  color: var(--gray-100);
+  font-size: 0.875rem;
+}
+
+.author_and_time time {
+  color: var(--gray-400);
+  font-size: 0.75rem;
+}
+
+.comment_box_top .trash_button {
+  border: none;
+  background-color: transparent;
+  color: var(--gray-400);
+  line-height: 0;
+  cursor: pointer;
+}
+
+.comment_box_top .trash_button:hover {
+  color: var(--red-500);
+}
+
+.comment_box .comment_box_content {
+  color: var(--gray-300);
+  line-height: 1.4rem;
+}
+
+.comment_column .like_button {
+  color: var(--gray-400);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: color 0.1s;
+}
+
+.comment_column .like_button button {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-weight: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+.comment_column .like_button:hover {
+  color: var(--green-500);
+}
+
+.comment_column .like_button span::before {
+  content: '•';
+  margin: 0 0.5rem;
+}

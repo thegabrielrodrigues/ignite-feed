@@ -35,7 +35,29 @@ button {
   font-weight: 400;
 }
 
-:focus {
+.swal2ConfirmButton {
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  background-color: var(--gray-700) !important;
+  color: var(--red-500) !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}
+
+.swal2ConfirmButton:active {
+  background-color: #323238e0 !important;
+}
+
+.swal2DenyButton {
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  color: var(--gray-100) !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}
+
+:focus:not(button, .swal2-popup) {
   border-radius: 3px;
   outline: 1px solid var(--green-500);
   box-shadow: 0 0 5px 1px var(--green-500);

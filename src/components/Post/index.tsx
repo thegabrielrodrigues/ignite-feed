@@ -44,6 +44,7 @@ export function Post({ postData }: PostProps) {
     const commentData: CommentDTO = {
       content: newTextComment,
       publishedAt: new Date(),
+      likeCount: 0,
     };
 
     setComments([commentData, ...comments]);
@@ -52,6 +53,18 @@ export function Post({ postData }: PostProps) {
 
   function handleDeleteComment(commentPostDate: string) {
     setComments(comments.filter((comment) => new Date(comment.publishedAt).toISOString() !== commentPostDate));
+  }
+
+  function handleLikeComment(commentPostDate: string) {
+    comments.reduce((prev, curr) => {
+      if (new Date(curr.publishedAt).toISOString() === commentPostDate) {
+        curr.likeCount = curr.likeCount + 1;
+      }
+
+      return prev;
+    }, []);
+
+    setComments([...comments]);
   }
 
   return (
@@ -115,7 +128,7 @@ export function Post({ postData }: PostProps) {
 
         <div className={comments.length && styles.comment_list}>
           {comments.map((comment, index) => (
-            <Comment key={index} commentData={comment} onRemove={handleDeleteComment} />
+            <Comment key={index} commentData={comment} onRemove={handleDeleteComment} onLikeComment={handleLikeComment} />
           ))}
         </div>
       </div>

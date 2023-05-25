@@ -10,10 +10,11 @@ import styles from './styles.module.css';
 interface CommentProps {
   commentData: CommentDTO;
   onRemove: (commentPostDate: string) => void;
+  onLikeComment: (commentPostDate: string) => void;
 }
 
-export function Comment({ commentData, onRemove }: CommentProps) {
-  const { content, publishedAt } = commentData;
+export function Comment({ commentData, onRemove, onLikeComment }: CommentProps) {
+  const { content, publishedAt, likeCount } = commentData;
 
   const publicationDate = {
     formattedPublicationDate: format(publishedAt, "dd' de 'MMMM' às 'HH:mm", { locale: ptBR }),
@@ -46,11 +47,11 @@ export function Comment({ commentData, onRemove }: CommentProps) {
         </div>
 
         <div className={styles.like_button}>
-          <button>
+          <button onClick={() => onLikeComment(new Date(publishedAt).toISOString())}>
             <ThumbsUp size={24} />
-            Aplaudir
+            Curtir
           </button>
-          <span>03</span>
+          <span>{likeCount}</span>
         </div>
       </div>
     </div>

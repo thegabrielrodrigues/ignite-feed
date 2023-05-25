@@ -7,7 +7,7 @@
 <h4 align="center">
 
     🚧 Ignite Feed 💚
-    🚧 Em Desenvolvimento 🔨
+    🚧 Finalizado 🦾
 </h4>
 
 <br>
@@ -19,9 +19,9 @@ O Ignite Feed é um website responsivo criado através das aulas da @rocketseat.
 <br>
 
 ## ⚙️ Funcionalidades
-- [ ] adicionar comentários
-- [ ] remover comentários
-- [ ] curtir os comentários
+- [x] adicionar comentários
+- [x] remover comentários
+- [x] curtir os comentários
 
 ---
 <br>
